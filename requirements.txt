@@ -1,0 +1,24 @@
+# Requirements for employee-service (backend)
+# Core web framework and server
+fastapi>=0.95.0
+uvicorn[standard]>=0.20.0
+
+# Postgres ORM + driver
+SQLAlchemy>=1.4.0
+psycopg2-binary>=2.9.0
+
+# Validation
+# Use Pydantic v2 and pydantic-settings (used by .venv/config.py)
+pydantic>=2.0.0
+pydantic-settings>=0.1.0
+
+# MongoDB driver
+pymongo>=4.0.0
+
+# Optional / tooling
+python-dotenv>=1.0.0    # load ENV vars m .env (optional)
+
+# Test / HTTP client
+pytest>=7.0.0
+httpx>=0.24.0
+
