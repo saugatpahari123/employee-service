@@ -68,7 +68,7 @@ cd employee-service/backend/postgres/app
 ## 5. Set Environment Variables
 - Use your RDS connection string for the backend:
 ```
-export DATABASE_URL='postgresql://postgres:Sasasasa439323@database-1.ctioemwy2xd8.us-east-2.rds.amazonaws.com:5432/employees'
+export DATABASE_URL='postgresql://postgres:password@database-1.ctioemwy2xd8.us-east-2.rds.amazonaws.com:5432/employees'
 ```
 
 ---
@@ -185,7 +185,7 @@ docker compose up -d --build
 ## 5. Set Environment Variables
 - Use your RDS connection string for the backend:
 ```
-export DATABASE_URL='postgresql://postgres:Sasasasa439323@database-1.ctioemwy2xd8.us-east-2.rds.amazonaws.com:5432/employees'
+export DATABASE_URL='postgresql://postgres:password@database-1.ctioemwy2xd8.us-east-2.rds.amazonaws.com:5432/employees'
 >>>>>>> 21c78e4 (Update deployment and setup docs for project)
 ```
 
