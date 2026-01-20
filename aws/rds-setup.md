@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## AWS RDS (PostgreSQL) setup for Employee Service
 
 This document shows how to create an RDS PostgreSQL instance, configure networking/security, and connect your FastAPI app using a DATABASE_URL.
@@ -95,3 +96,73 @@ Troubleshooting
   - RDS SG allows inbound from EC2 SG on 5432.
   - No network ACL blocks traffic.
 Create PostgreSQL database using AWS RDS.
+=======
+# AWS RDS Setup for Employee Service (PostgreSQL)
+
+This guide explains how to set up AWS RDS PostgreSQL for your employee-service project.
+
+## 1. Create RDS PostgreSQL Instance
+
+- Go to AWS RDS Console > Databases > Create database
+- Choose Standard Create
+- Engine: PostgreSQL
+- Version: (latest recommended)
+- DB instance identifier: e.g., `employee-db`
+- Master username: `postgres`
+- Master password: (choose a strong password)
+- DB instance size: Free tier or as needed
+- Storage: 20GB (default is fine)
+- Uncheck "Enable storage autoscaling" (optional)
+
+## 2. Connectivity
+- VPC: Default or your custom VPC
+- Public access: Yes (for development; restrict for production)
+- VPC security group: Create new or use existing
+- Add inbound rule: PostgreSQL, port 5432, source 0.0.0.0/0 (for testing; restrict for production)
+
+## 3. Database Settings
+- Initial database name: `employees`
+- Leave other settings as default or adjust as needed
+
+## 4. Create the Database
+- Click "Create database"
+- Wait for the instance status to become "Available"
+
+## 5. Get Connection Details
+- Endpoint: e.g., `database-1.ctioemwy2xd8.us-east-2.rds.amazonaws.com`
+- Port: 5432
+- Username: `postgres`
+- Password: (your password)
+- Database: `employees`
+
+## 6. Configure Security Group
+- Go to EC2 > Security Groups
+- Find the group attached to your RDS instance
+- Edit inbound rules:
+  - Type: PostgreSQL
+  - Port: 5432
+  - Source: 0.0.0.0/0 (for testing; restrict for production)
+
+## 7. Set DATABASE_URL in Backend
+
+Example:
+```
+postgresql://postgres:<your-password>@database-1.ctioemwy2xd8.us-east-2.rds.amazonaws.com:5432/employees
+```
+
+- Use this as the value for the `DATABASE_URL` environment variable in your backend Docker run command or .env file.
+
+## 8. (Optional) Connect with psql or DBeaver
+
+```
+psql -h database-1.ctioemwy2xd8.us-east-2.rds.amazonaws.com -U postgres -d employees -p 5432
+```
+
+---
+
+**Summary:**
+- Create RDS PostgreSQL instance
+- Set up security group for port 5432
+- Use the connection string in your backend
+- Restrict security group for production
+>>>>>>> 21c78e4 (Update deployment and setup docs for project)

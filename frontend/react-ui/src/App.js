@@ -1,7 +1,9 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const API_BASE = '/api/employees'; // adjust if your API is hosted elsewhere
+// Use environment variable for API base, fallback to deployed backend URL
+const API_BASE = process.env.REACT_APP_API_BASE || 'http://18.191.110.29:8000/api/employees';
 
 function App() {
   const empty = { employee_id: '', first_name: '', last_name: '', dob: '', last4_ssn: '' };

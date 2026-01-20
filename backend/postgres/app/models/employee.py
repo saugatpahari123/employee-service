@@ -1,6 +1,5 @@
 from sqlalchemy import Column, String, Date
-from ..db.session import Base
-
+from db.session import Base
 class Employee(Base):
     __tablename__ = "employees"
 
